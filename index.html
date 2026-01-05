@@ -1,90 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ECLIPSE HF</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #1a1a22 0%, #050508 60%, #000 100%);
-      font-family: 'Montserrat', sans-serif;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    /* Eclipse Glow */
-    .eclipse {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0) 70%);
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: pulse 6s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.08); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 0.6; }
-    }
-
-    .content {
-      position: relative;
-      text-align: center;
-      z-index: 2;
-    }
-
-    h1 {
-      font-size: 56px;
-      letter-spacing: 6px;
-      margin: 0 0 12px;
-      font-weight: 600;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      opacity: 0.75;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .status {
-      font-size: 14px;
-      opacity: 0.6;
-      margin-top: 18px;
-      letter-spacing: 2px;
-    }
-
-    /* subtle particles */
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.15;
-    }
+    body{margin:0;font-family:Arial;background:#050508;color:#fff}
+    .nav{position:sticky;top:0;background:rgba(5,5,8,.85);backdrop-filter:blur(10px);display:flex;gap:18px;padding:14px 18px;align-items:center;border-bottom:1px solid #1b1b25}
+    .nav a{color:#cfcfe6;text-decoration:none;font-size:14px;opacity:.85}
+    .nav a:hover{opacity:1}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+    .hero{padding:64px 0;background:radial-gradient(circle at 30% 10%, #2a1b52 0%, #050508 55%)}
+    .title{font-size:44px;letter-spacing:4px;margin:0 0 10px}
+    .sub{opacity:.8;margin:0 0 18px}
+    .pill{display:inline-block;border:1px solid #2b2b3a;border-radius:999px;padding:8px 14px;font-size:13px;opacity:.9}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+    .card{border:1px solid #1b1b25;border-radius:16px;padding:16px;background:rgba(255,255,255,.03)}
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;opacity:.75;font-size:13px;line-height:1.45}
+    .section{padding:38px 0;border-top:1px solid #1b1b25}
+    .section h2{margin:0 0 14px;font-size:18px;letter-spacing:1px}
+    .serverRow{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:12px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:10px;background:#11111a;border:1px solid #232336;font-size:12px;opacity:.9}
+    table{width:100%;border-collapse:collapse}
+    th,td{border-bottom:1px solid #1b1b25;padding:10px 8px;text-align:left;font-size:13px}
+    th{opacity:.7;font-weight:600}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.serverRow{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 
-  <div class="stars"></div>
-  <div class="eclipse"></div>
-
-  <div class="content">
-    <h1>ECLIPSE HF</h1>
-    <div class="subtitle">High Five • Low Rate x10 • Craft Server</div>
-    <div class="status">OPENING SOON</div>
+  <div class="nav wrap">
+    <strong style="letter-spacing:2px">ECLIPSE HF</strong>
+    <a href="#about">About</a>
+    <a href="#servers">Servers</a>
+    <a href="#download">Download</a>
+    <a href="#rating">Rating</a>
+    <span style="margin-left:auto;opacity:.7;font-size:13px">EN</span>
   </div>
 
+  <div class="hero">
+    <div class="wrap">
+      <h1 class="title">HIGH FIVE • ECLIPSE HF</h1>
+      <p class="sub">Low Rate x10 • Craft Economy • Long-term</p>
+      <span class="pill">Opening: <b id="openDateText">TBA</b> • <span id="countdown">—</span></span>
+
+      <div class="grid" id="about">
+        <div class="card">
+          <h3>No Bots</h3>
+          <p>Fair play focus. Anti-cheat and strict rules.</p>
+        </div>
+        <div class="card">
+          <h3>Craft Economy</h3>
+          <p>Trading and crafting matter. Balanced progression.</p>
+        </div>
+        <div class="card">
+          <h3>Low Rate x10</h3>
+          <p>Classic pace with modern stability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="servers">
+    <div class="wrap">
+      <h2>Servers</h2>
+      <div class="serverRow">
+        <div class="card">
+          <h3>Main Realm</h3>
+          <p>High Five • x10 • Craft</p>
+        </div>
+        <div class="card">
+          <h3>Status</h3>
+          <span class="badge">Online: —</span>
+        </div>
+        <div class="card">
+          <h3>Rates</h3>
+          <span class="badge">EXP/SP x10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="download">
+    <div class="wrap">
+      <h2>Start to play</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Step 1 — Registration</h3>
+          <p>(Coming soon) Create your master account.</p>
+        </div>
+        <div class="card">
+          <h3>Step 2 — Download</h3>
+          <p>Add your client/patch links here.</p>
+        </div>
+        <div class="card">
+          <h3>Step 3 — Connect</h3>
+          <p>IP / Port + system requirements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="rating">
+    <div class="wrap">
+      <h2>Project Rating</h2>
+      <div class="card">
+        <table>
+          <thead>
+            <tr><th>Character</th><th>Clan</th><th>Class</th><th>PvP</th><th>PK</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Example</td><td>ECLIPSE</td><td>Duelist</td><td>120</td><td>3</td></tr>
+            <tr><td>Example2</td><td>—</td><td>Archmage</td><td>98</td><td>0</td></tr>
+          </tbody>
+        </table>
+        <p style="opacity:.6;font-size:12px;margin:10px 0 0">Note: Ratings will become live after backend integration.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Opening date: set your date here (UTC recommended)
+    const openingISO = "2026-02-15T18:00:00Z"; // örnek
+    const openDate = new Date(openingISO);
+    document.getElementById("openDateText").textContent = openDate.toUTCString().replace("GMT","UTC");
+
+    function tick(){
+      const now = new Date();
+      const diff = openDate - now;
+      const el = document.getElementById("countdown");
+      if (diff <= 0){ el.textContent = "OPEN"; return; }
+      const s = Math.floor(diff/1000);
+      const d = Math.floor(s/86400);
+      const h = Math.floor((s%86400)/3600);
+      const m = Math.floor((s%3600)/60);
+      const ss = s%60;
+      el.textContent = `${d}d ${h}h ${m}m ${ss}s`;
+    }
+    tick(); setInterval(tick, 1000);
+  </script>
 </body>
 </html>
