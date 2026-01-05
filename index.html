@@ -1,145 +1,220 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ECLIPSE HF</title>
+
+<!-- Premium font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#050508;
-  --line:#1b1b25;
-  --card:rgba(255,255,255,.04);
-  --muted:#cfcfe6;
+  --line:rgba(255,255,255,.10);
+  --card:rgba(255,255,255,.05);
+  --card2:rgba(255,255,255,.035);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.70);
+  --muted2:rgba(255,255,255,.55);
   --accent:#a78bfa;
+  --accent2:#6d28d9;
+  --shadow: 0 20px 60px rgba(0,0,0,.55);
+  --shadow2: 0 10px 30px rgba(0,0,0,.45);
+  --r:18px;
 }
 
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:#fff;
+  font-family:Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(167,139,250,.14), transparent 55%),
+              radial-gradient(1200px 800px at 80% 30%, rgba(109,40,217,.10), transparent 60%),
+              var(--bg);
+  color:var(--text);
 }
 
-a{color:var(--muted);text-decoration:none}
-a:hover{color:#fff}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
 
-.wrap{max-width:1150px;margin:0 auto;padding:0 18px}
-
-/* NAV */
+/* Top nav (premium glass) */
 .nav{
   position:sticky;top:0;z-index:50;
-  background:rgba(5,5,8,.85);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background: rgba(5,5,8,.55);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
 }
 .navInner{
   display:flex;align-items:center;gap:18px;
   padding:14px 0;
 }
-.brand{font-weight:800;letter-spacing:2px;font-size:14px}
+.brand{
+  display:flex;align-items:center;gap:10px;
+  letter-spacing:2px;
+  font-weight:800;
+  font-size:13px;
+  text-transform:uppercase;
+}
+.brandDot{
+  width:10px;height:10px;border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.1));
+  box-shadow: 0 0 18px rgba(167,139,250,.35);
+  opacity:.9;
+}
 .navLinks{display:flex;gap:14px;flex-wrap:wrap}
-.navLinks a{font-size:13px;opacity:.85}
-.navLinks a:hover{opacity:1}
-.lang{margin-left:auto;font-size:12px;opacity:.7}
+.navLinks a{
+  font-size:13px;
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:12px;
+}
+.navLinks a:hover{
+  color:#fff;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  padding:7px 9px;
+}
+.lang{margin-left:auto;font-size:12px;color:var(--muted2)}
 
-/* HERO */
+/* Hero with YOUR image */
 .hero{
   position:relative;
-  padding:90px 0 70px;
+  padding:82px 0 58px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+
+  /* YOU will replace this image file in repo */
   background:
-    linear-gradient(to right, rgba(5,5,8,.85), rgba(5,5,8,.4)),
-    url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1600&q=80");
+    linear-gradient(to right, rgba(5,5,8,.88) 0%, rgba(5,5,8,.55) 55%, rgba(5,5,8,.25) 100%),
+    url("assets/img/hero.jpg");
   background-size:cover;
   background-position:center;
-  border-bottom:1px solid var(--line);
 }
-.heroBox{max-width:650px}
+.hero::before{
+  content:"";
+  position:absolute;inset:-120px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(167,139,250,.20), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255,140,0,.08), transparent 55%),
+    radial-gradient(circle at 60% 80%, rgba(109,40,217,.14), transparent 60%);
+  filter: blur(2px);
+  pointer-events:none;
+}
+.heroInner{position:relative}
+.kicker{
+  display:inline-flex;gap:10px;align-items:center;
+  padding:8px 12px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.28);
+  color:var(--muted);
+  font-size:12px;
+}
+.kicker b{color:#fff}
 .title{
-  font-size:46px;
-  letter-spacing:4px;
+  margin:14px 0 10px;
+  font-size:54px;
+  line-height:1.05;
+  letter-spacing:2px;
   text-transform:uppercase;
-  margin:0 0 10px;
+  font-weight:800;
 }
-.sub{opacity:.85;margin-bottom:18px;font-size:14px}
+.sub{
+  margin:0 0 18px;
+  color:var(--muted);
+  font-size:14px;
+  max-width:650px;
+}
 .pill{
-  display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap;
-  border:1px solid #2b2b3a;
-  border-radius:999px;
-  padding:10px 16px;
-  background:rgba(0,0,0,.45);
+  display:inline-flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:10px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.32);
+  box-shadow: var(--shadow2);
   font-size:13px;
 }
-.count{color:var(--accent);font-weight:700}
+.count{color:var(--accent);font-weight:800}
 
-/* SECTIONS */
-.section{padding:42px 0;border-top:1px solid var(--line)}
-.section h2{margin:0 0 16px;font-size:18px;letter-spacing:1px}
+/* Buttons */
+.btnRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.2px;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{transform: translateY(-1px);border-color: rgba(167,139,250,.55);background: rgba(167,139,250,.10)}
+.btn.primary{
+  background: linear-gradient(135deg, rgba(167,139,250,.35), rgba(109,40,217,.25));
+  border-color: rgba(167,139,250,.55);
+  box-shadow: 0 0 0 1px rgba(167,139,250,.15), 0 18px 45px rgba(109,40,217,.20);
+}
+.btn.primary:hover{background: linear-gradient(135deg, rgba(167,139,250,.45), rgba(109,40,217,.30))}
 
+/* Sections */
+.section{padding:44px 0;border-top:1px solid var(--line)}
+.section h2{
+  margin:0 0 14px;
+  font-size:16px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color: rgba(255,255,255,.80);
+}
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:14px;
 }
 .card{
-  border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:var(--r);
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, var(--card), var(--card2));
+  box-shadow: var(--shadow2);
   padding:18px;
-  background:var(--card);
 }
-.card h3{margin:0 0 8px;font-size:16px}
-.card p{margin:0;opacity:.75;font-size:13px;line-height:1.5}
+.card h3{margin:0 0 8px;font-size:15px;letter-spacing:.2px}
+.card p{margin:0;color:var(--muted2);font-size:13px;line-height:1.55}
 
 .serverRow{
   display:grid;
   grid-template-columns:1.2fr .8fr .8fr;
   gap:14px;
 }
-
 .badge{
   display:inline-block;
-  padding:6px 10px;
-  border-radius:10px;
-  border:1px solid #2b2b3a;
-  background:#11111a;
+  padding:7px 10px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  color: rgba(255,255,255,.75);
   font-size:12px;
 }
 
-/* BUTTONS */
-.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.btn{
-  padding:11px 14px;
-  border-radius:14px;
-  border:1px solid #2b2b3a;
-  background:rgba(255,255,255,.06);
-  font-size:13px;
-  font-weight:600;
-}
-.btn.primary{
-  background:rgba(167,139,250,.18);
-  border-color:rgba(167,139,250,.6);
-}
-.btn:hover{opacity:1}
+.tableWrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.10);font-size:13px}
+th{color:rgba(255,255,255,.65);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px}
 
-/* TABLE */
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px 8px;border-bottom:1px solid var(--line);font-size:13px}
-th{opacity:.7}
-
-/* FOOTER */
 .footer{
   border-top:1px solid var(--line);
   padding:18px 0;
   text-align:center;
+  color:rgba(255,255,255,.55);
   font-size:12px;
-  opacity:.6;
 }
 
-@media(max-width:900px){
+@media(max-width:980px){
   .grid{grid-template-columns:1fr}
   .serverRow{grid-template-columns:1fr}
-  .title{font-size:34px}
+  .title{font-size:38px}
 }
 </style>
 </head>
@@ -149,7 +224,7 @@ th{opacity:.7}
 <!-- NAV -->
 <div class="nav">
   <div class="wrap navInner">
-    <div class="brand">ECLIPSE HF</div>
+    <div class="brand"><span class="brandDot"></span> ECLIPSE HF</div>
     <div class="navLinks">
       <a href="#about">About</a>
       <a href="#servers">Servers</a>
@@ -164,12 +239,19 @@ th{opacity:.7}
 
 <!-- HERO -->
 <div class="hero">
-  <div class="wrap heroBox">
+  <div class="wrap heroInner">
+    <div class="kicker">Chronicle: <b>High Five</b> • Type: <b>Low Rate x10</b> • <b>Craft Economy</b></div>
     <h1 class="title">High Five • Eclipse HF</h1>
-    <p class="sub">Low Rate x10 • Craft Economy • Long-term</p>
+    <p class="sub">Long-term project built for players who prefer real progression, stable economy and fair gameplay.</p>
+
     <div class="pill">
-      Opening: <b id="openDateText">TBA</b> •
-      <span class="count" id="countdown">—</span>
+      Opening: <b id="openDateText">TBA</b> • <span class="count" id="countdown">—</span>
+    </div>
+
+    <div class="btnRow">
+      <a class="btn primary" href="#register">Create Account</a>
+      <a class="btn" href="#download">Download</a>
+      <a class="btn" href="#servers">Server Info</a>
     </div>
   </div>
 </div>
@@ -177,10 +259,11 @@ th{opacity:.7}
 <!-- ABOUT -->
 <div class="section" id="about">
   <div class="wrap">
+    <h2>Project Focus</h2>
     <div class="grid">
-      <div class="card"><h3>No Bots</h3><p>Strict anti-cheat and fair play rules.</p></div>
-      <div class="card"><h3>Craft Economy</h3><p>Trading and crafting really matter.</p></div>
-      <div class="card"><h3>Low Rate x10</h3><p>Classic progression with stability.</p></div>
+      <div class="card"><h3>No Bots</h3><p>Strict anti-cheat approach and fair rules. Real players, real progress.</p></div>
+      <div class="card"><h3>Craft Economy</h3><p>Trading and crafting matter. Market activity is part of the gameplay.</p></div>
+      <div class="card"><h3>Low Rate x10</h3><p>Classic pace with modern stability. Long-term and balanced.</p></div>
     </div>
   </div>
 </div>
@@ -191,8 +274,8 @@ th{opacity:.7}
     <h2>Servers</h2>
     <div class="serverRow">
       <div class="card"><h3>Main Realm</h3><p>High Five • x10 • Craft</p></div>
-      <div class="card"><h3>Status</h3><span class="badge">Online: —</span></div>
-      <div class="card"><h3>Rates</h3><span class="badge">EXP/SP x10</span></div>
+      <div class="card"><h3>Status</h3><p style="margin-top:10px"><span class="badge">Online: —</span></p><p style="margin-top:10px;color:var(--muted2);font-size:12px">Live status will be enabled later.</p></div>
+      <div class="card"><h3>Rates</h3><p style="margin-top:10px"><span class="badge">EXP/SP x10</span></p><p style="margin-top:10px;color:var(--muted2);font-size:12px">Final rate sheet coming soon.</p></div>
     </div>
   </div>
 </div>
@@ -202,10 +285,14 @@ th{opacity:.7}
   <div class="wrap">
     <h2>Registration</h2>
     <div class="card">
-      <p>Create your game account and join the world of ECLIPSE HF.</p>
+      <p>Create your game account and prepare for opening.</p>
       <div class="btnRow">
         <a class="btn primary" href="YOUR_REGISTER_LINK" target="_blank">Create Account</a>
+        <a class="btn" href="#download">Download Files</a>
       </div>
+      <p style="margin-top:12px;color:var(--muted2);font-size:12px">
+        Registration system will be connected to the game backend when ready.
+      </p>
     </div>
   </div>
 </div>
@@ -222,13 +309,15 @@ th{opacity:.7}
       <div class="card">
         <h3>Step 2 — Download</h3>
         <div class="btnRow">
-          <a class="btn" href="YOUR_CLIENT_LINK">Download Client</a>
-          <a class="btn" href="YOUR_PATCH_LINK">Download Patch</a>
+          <a class="btn" href="YOUR_CLIENT_LINK" target="_blank">Download Client</a>
+          <a class="btn" href="YOUR_PATCH_LINK" target="_blank">Download Patch</a>
         </div>
+        <p style="margin-top:12px;color:var(--muted2);font-size:12px">Replace the links in HTML.</p>
       </div>
       <div class="card">
         <h3>Step 3 — Connect</h3>
         <p>IP: <b>YOUR_SERVER_IP</b> • Port: <b>2106</b></p>
+        <p style="margin-top:12px;color:var(--muted2);font-size:12px">High Five client required.</p>
       </div>
     </div>
   </div>
@@ -250,32 +339,52 @@ th{opacity:.7}
 <div class="section" id="rating">
   <div class="wrap">
     <h2>Project Rating</h2>
-    <div class="card">
+    <div class="card tableWrap">
       <table>
-        <tr><th>Character</th><th>Clan</th><th>Class</th><th>PvP</th><th>PK</th></tr>
-        <tr><td>Example</td><td>ECLIPSE</td><td>Duelist</td><td>120</td><td>3</td></tr>
+        <thead>
+          <tr><th>Character</th><th>Clan</th><th>Class</th><th>PvP</th><th>PK</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Example</td><td>ECLIPSE</td><td>Duelist</td><td>120</td><td>3</td></tr>
+          <tr><td>Example2</td><td>—</td><td>Archmage</td><td>98</td><td>0</td></tr>
+        </tbody>
       </table>
+      <p style="margin:12px 0 0;color:var(--muted2);font-size:12px">
+        Live ratings will be enabled after backend integration.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">© <span id="y"></span> ECLIPSE HF</div>
+<div class="footer">© <span id="y"></span> ECLIPSE HF • High Five x10 Craft</div>
 
 <script>
-const openingISO="2026-02-15T18:00:00Z";
-const openDate=new Date(openingISO);
-document.getElementById("openDateText").textContent=openDate.toUTCString().replace("GMT","UTC");
-function tick(){
-  const now=new Date();
-  const d=openDate-now;
-  if(d<=0){document.getElementById("countdown").textContent="OPEN";return;}
-  const s=Math.floor(d/1000);
-  document.getElementById("countdown").textContent=
-    `${Math.floor(s/86400)}d ${Math.floor(s%86400/3600)}h ${Math.floor(s%3600/60)}m ${s%60}s`;
-}
-tick();setInterval(tick,1000);
-document.getElementById("y").textContent=new Date().getFullYear();
+  // Opening date (UTC). Change if you want:
+  const openingISO = "2026-02-15T18:00:00Z";
+  const openDate = new Date(openingISO);
+
+  // Better UTC output
+  const opts = {
+    weekday:"short", year:"numeric", month:"short", day:"2-digit",
+    hour:"2-digit", minute:"2-digit", timeZone:"UTC", timeZoneName:"short"
+  };
+  document.getElementById("openDateText").textContent =
+    new Intl.DateTimeFormat("en-US", opts).format(openDate);
+
+  function tick(){
+    const now = new Date();
+    const diff = openDate - now;
+    const el = document.getElementById("countdown");
+    if (diff <= 0){ el.textContent = "OPEN"; return; }
+    const s = Math.floor(diff/1000);
+    const d = Math.floor(s/86400);
+    const h = Math.floor((s%86400)/3600);
+    const m = Math.floor((s%3600)/60);
+    const ss = s%60;
+    el.textContent = `${d}d ${h}h ${m}m ${ss}s`;
+  }
+  tick(); setInterval(tick, 1000);
+  document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 
 </body>
