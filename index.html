@@ -1,325 +1,282 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ECLIPSE HF</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECLIPSE HF</title>
 
-  <style>
-    :root{
-      --bg:#050508;
-      --line:#1b1b25;
-      --text:#ffffff;
-      --muted:#cfcfe6;
-      --card:rgba(255,255,255,.03);
-      --accent:#a78bfa; /* soft purple */
-    }
+<style>
+:root{
+  --bg:#050508;
+  --line:#1b1b25;
+  --card:rgba(255,255,255,.04);
+  --muted:#cfcfe6;
+  --accent:#a78bfa;
+}
 
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial, Helvetica, sans-serif;background:var(--bg);color:var(--text)}
-    a{color:var(--muted);text-decoration:none}
-    a:hover{color:#fff}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:#fff;
+}
 
-    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+a{color:var(--muted);text-decoration:none}
+a:hover{color:#fff}
 
-    /* Top nav */
-    .nav{
-      position:sticky;top:0;z-index:50;
-      background:rgba(5,5,8,.82);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .navInner{
-      display:flex;align-items:center;gap:18px;
-      padding:14px 0;
-    }
-    .brand{
-      font-weight:800;
-      letter-spacing:2px;
-      font-size:14px;
-      white-space:nowrap;
-    }
-    .navLinks{display:flex;gap:14px;flex-wrap:wrap}
-    .navLinks a{font-size:13px;opacity:.85}
-    .navLinks a:hover{opacity:1}
-    .lang{margin-left:auto;font-size:12px;opacity:.7}
+.wrap{max-width:1150px;margin:0 auto;padding:0 18px}
 
-    /* Hero */
-    .hero{
-      padding:64px 0 44px;
-      background:
-        radial-gradient(circle at 30% 10%, rgba(167,139,250,.22) 0%, rgba(5,5,8,1) 55%),
-        radial-gradient(circle at 70% 30%, rgba(99,102,241,.12) 0%, rgba(5,5,8,1) 55%);
-      border-bottom:1px solid var(--line);
-      position:relative;
-      overflow:hidden;
-    }
-    /* subtle stars */
-    .stars{
-      position:absolute;inset:0;
-      background-image: radial-gradient(#ffffff22 1px, transparent 1px);
-      background-size: 70px 70px;
-      opacity:.10;
-      pointer-events:none;
-    }
-    /* eclipse glow */
-    .eclipse{
-      position:absolute;
-      width:520px;height:520px;border-radius:50%;
-      left:-120px;top:-160px;
-      background:radial-gradient(circle, rgba(167,139,250,.18) 0%, rgba(0,0,0,0) 68%);
-      filter:blur(35px);
-      animation:pulse 7s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes pulse{
-      0%{transform:scale(1);opacity:.55}
-      50%{transform:scale(1.08);opacity:.85}
-      100%{transform:scale(1);opacity:.55}
-    }
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(5,5,8,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.navInner{
+  display:flex;align-items:center;gap:18px;
+  padding:14px 0;
+}
+.brand{font-weight:800;letter-spacing:2px;font-size:14px}
+.navLinks{display:flex;gap:14px;flex-wrap:wrap}
+.navLinks a{font-size:13px;opacity:.85}
+.navLinks a:hover{opacity:1}
+.lang{margin-left:auto;font-size:12px;opacity:.7}
 
-    .title{
-      font-size:44px;letter-spacing:4px;margin:0 0 10px;
-      text-transform:uppercase;
-    }
-    .sub{opacity:.8;margin:0 0 18px;font-size:14px}
-    .pill{
-      display:inline-flex;gap:10px;flex-wrap:wrap;align-items:center;
-      border:1px solid #2b2b3a;border-radius:999px;padding:9px 14px;
-      font-size:13px;opacity:.95;
-      background:rgba(0,0,0,.18);
-    }
-    .pill b{color:#fff}
-    .count{color:var(--accent);font-weight:700}
+/* HERO */
+.hero{
+  position:relative;
+  padding:90px 0 70px;
+  background:
+    linear-gradient(to right, rgba(5,5,8,.85), rgba(5,5,8,.4)),
+    url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  border-bottom:1px solid var(--line);
+}
+.heroBox{max-width:650px}
+.title{
+  font-size:46px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin:0 0 10px;
+}
+.sub{opacity:.85;margin-bottom:18px;font-size:14px}
+.pill{
+  display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap;
+  border:1px solid #2b2b3a;
+  border-radius:999px;
+  padding:10px 16px;
+  background:rgba(0,0,0,.45);
+  font-size:13px;
+}
+.count{color:var(--accent);font-weight:700}
 
-    /* Sections */
-    .section{padding:38px 0;border-top:1px solid var(--line)}
-    .section h2{margin:0 0 14px;font-size:18px;letter-spacing:1px}
+/* SECTIONS */
+.section{padding:42px 0;border-top:1px solid var(--line)}
+.section h2{margin:0 0 16px;font-size:18px;letter-spacing:1px}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-top:22px;
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:16px;
-      background:var(--card);
-    }
-    .card h3{margin:0 0 8px;font-size:16px}
-    .card p{margin:0;opacity:.75;font-size:13px;line-height:1.45}
-    .badge{
-      display:inline-block;padding:6px 10px;border-radius:10px;
-      background:#11111a;border:1px solid #232336;
-      font-size:12px;opacity:.9
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  background:var(--card);
+}
+.card h3{margin:0 0 8px;font-size:16px}
+.card p{margin:0;opacity:.75;font-size:13px;line-height:1.5}
 
-    .serverRow{
-      display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      gap:12px;
-    }
+.serverRow{
+  display:grid;
+  grid-template-columns:1.2fr .8fr .8fr;
+  gap:14px;
+}
 
-    /* Table */
-    table{width:100%;border-collapse:collapse}
-    th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;font-size:13px}
-    th{opacity:.7;font-weight:600}
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid #2b2b3a;
+  background:#11111a;
+  font-size:12px;
+}
 
-    /* Footer */
-    .footer{
-      border-top:1px solid var(--line);
-      padding:18px 0;
-      text-align:center;
-      opacity:.6;
-      font-size:12px;
-    }
+/* BUTTONS */
+.btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn{
+  padding:11px 14px;
+  border-radius:14px;
+  border:1px solid #2b2b3a;
+  background:rgba(255,255,255,.06);
+  font-size:13px;
+  font-weight:600;
+}
+.btn.primary{
+  background:rgba(167,139,250,.18);
+  border-color:rgba(167,139,250,.6);
+}
+.btn:hover{opacity:1}
 
-    /* Responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .serverRow{grid-template-columns:1fr}
-      .title{font-size:34px}
-    }
-  </style>
+/* TABLE */
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);font-size:13px}
+th{opacity:.7}
+
+/* FOOTER */
+.footer{
+  border-top:1px solid var(--line);
+  padding:18px 0;
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .serverRow{grid-template-columns:1fr}
+  .title{font-size:34px}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="wrap navInner">
-      <div class="brand">ECLIPSE HF</div>
-      <div class="navLinks">
-        <a href="#about">About</a>
-        <a href="#servers">Servers</a>
-        <a href="#download">Download</a>
-        <a href="#rates">Rates</a>
-        <a href="#rating">Rating</a>
-      </div>
-      <div class="lang">EN</div>
+<!-- NAV -->
+<div class="nav">
+  <div class="wrap navInner">
+    <div class="brand">ECLIPSE HF</div>
+    <div class="navLinks">
+      <a href="#about">About</a>
+      <a href="#servers">Servers</a>
+      <a href="#register">Register</a>
+      <a href="#download">Download</a>
+      <a href="#rates">Rates</a>
+      <a href="#rating">Rating</a>
+    </div>
+    <div class="lang">EN</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap heroBox">
+    <h1 class="title">High Five • Eclipse HF</h1>
+    <p class="sub">Low Rate x10 • Craft Economy • Long-term</p>
+    <div class="pill">
+      Opening: <b id="openDateText">TBA</b> •
+      <span class="count" id="countdown">—</span>
     </div>
   </div>
+</div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="stars"></div>
-    <div class="eclipse"></div>
-
-    <div class="wrap">
-      <h1 class="title">High Five • Eclipse HF</h1>
-      <p class="sub">Low Rate x10 • Craft Economy • Long-term</p>
-
-      <div class="pill">
-        <span>Opening: <b id="openDateText">TBA</b></span>
-        <span>•</span>
-        <span class="count" id="countdown">—</span>
-      </div>
-
-      <!-- FEATURES -->
-      <div class="grid" id="about">
-        <div class="card">
-          <h3>No Bots</h3>
-          <p>Fair play focus. Anti-cheat and strict rules.</p>
-        </div>
-        <div class="card">
-          <h3>Craft Economy</h3>
-          <p>Trading and crafting matter. Balanced progression.</p>
-        </div>
-        <div class="card">
-          <h3>Low Rate x10</h3>
-          <p>Classic pace with modern stability.</p>
-        </div>
-      </div>
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="card"><h3>No Bots</h3><p>Strict anti-cheat and fair play rules.</p></div>
+      <div class="card"><h3>Craft Economy</h3><p>Trading and crafting really matter.</p></div>
+      <div class="card"><h3>Low Rate x10</h3><p>Classic progression with stability.</p></div>
     </div>
   </div>
+</div>
 
-  <!-- SERVERS -->
-  <div class="section" id="servers">
-    <div class="wrap">
-      <h2>Servers</h2>
-      <div class="serverRow">
-        <div class="card">
-          <h3>Main Realm</h3>
-          <p>High Five • x10 • Craft</p>
-        </div>
-        <div class="card">
-          <h3>Status</h3>
-          <p style="margin-top:8px"><span class="badge">Online: —</span></p>
-          <p style="opacity:.55;font-size:12px;margin-top:10px">Live status will be enabled later.</p>
-        </div>
-        <div class="card">
-          <h3>Rates</h3>
-          <p style="margin-top:8px"><span class="badge">EXP/SP x10</span></p>
-          <p style="opacity:.55;font-size:12px;margin-top:10px">Final rate sheet coming soon.</p>
-        </div>
+<!-- SERVERS -->
+<div class="section" id="servers">
+  <div class="wrap">
+    <h2>Servers</h2>
+    <div class="serverRow">
+      <div class="card"><h3>Main Realm</h3><p>High Five • x10 • Craft</p></div>
+      <div class="card"><h3>Status</h3><span class="badge">Online: —</span></div>
+      <div class="card"><h3>Rates</h3><span class="badge">EXP/SP x10</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER -->
+<div class="section" id="register">
+  <div class="wrap">
+    <h2>Registration</h2>
+    <div class="card">
+      <p>Create your game account and join the world of ECLIPSE HF.</p>
+      <div class="btnRow">
+        <a class="btn primary" href="YOUR_REGISTER_LINK" target="_blank">Create Account</a>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- START TO PLAY -->
-  <div class="section" id="download">
-    <div class="wrap">
-      <h2>Start to play</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Step 1 — Registration</h3>
-          <p>(Coming soon) Create your master account.</p>
-        </div>
-
-        <div class="card">
-          <h3>Step 2 — Download</h3>
-          <p>
-            <a href="YOUR_PATCH_LINK" target="_blank">Download Patch</a>
-            &nbsp;•&nbsp;
-            <a href="YOUR_CLIENT_LINK" target="_blank">Download Client</a>
-          </p>
-          <p style="opacity:.55;font-size:12px;margin-top:10px">Replace links in the HTML.</p>
-        </div>
-
-        <div class="card">
-          <h3>Step 3 — Connect</h3>
-          <p>IP: <b>YOUR_SERVER_IP</b> • Port: <b>2106</b></p>
-          <p style="opacity:.55;font-size:12px;margin-top:10px">High Five client required.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RATES -->
-  <div class="section" id="rates">
-    <div class="wrap">
-      <h2>Rates</h2>
-      <div class="grid">
-        <div class="card"><h3>EXP / SP</h3><p>x10</p></div>
-        <div class="card"><h3>Adena</h3><p>x?</p></div>
-        <div class="card"><h3>Spoil</h3><p>x?</p></div>
-      </div>
-      <p style="opacity:.6;font-size:12px;margin-top:10px">Rates will be finalized before opening.</p>
-    </div>
-  </div>
-
-  <!-- RATING -->
-  <div class="section" id="rating">
-    <div class="wrap">
-      <h2>Project Rating</h2>
+<!-- DOWNLOAD -->
+<div class="section" id="download">
+  <div class="wrap">
+    <h2>Start to Play</h2>
+    <div class="grid">
       <div class="card">
-        <table>
-          <thead>
-            <tr><th>Character</th><th>Clan</th><th>Class</th><th>PvP</th><th>PK</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Example</td><td>ECLIPSE</td><td>Duelist</td><td>120</td><td>3</td></tr>
-            <tr><td>Example2</td><td>—</td><td>Archmage</td><td>98</td><td>0</td></tr>
-          </tbody>
-        </table>
-        <p style="opacity:.6;font-size:12px;margin:10px 0 0">
-          Note: Ratings will become live after backend integration.
-        </p>
+        <h3>Step 1 — Register</h3>
+        <p>Create your master account.</p>
+      </div>
+      <div class="card">
+        <h3>Step 2 — Download</h3>
+        <div class="btnRow">
+          <a class="btn" href="YOUR_CLIENT_LINK">Download Client</a>
+          <a class="btn" href="YOUR_PATCH_LINK">Download Patch</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Step 3 — Connect</h3>
+        <p>IP: <b>YOUR_SERVER_IP</b> • Port: <b>2106</b></p>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    © <span id="y"></span> ECLIPSE HF • High Five x10 Craft
+<!-- RATES -->
+<div class="section" id="rates">
+  <div class="wrap">
+    <h2>Rates</h2>
+    <div class="grid">
+      <div class="card"><h3>EXP / SP</h3><p>x10</p></div>
+      <div class="card"><h3>Adena</h3><p>x?</p></div>
+      <div class="card"><h3>Spoil</h3><p>x?</p></div>
+    </div>
   </div>
+</div>
 
-  <script>
-    // Opening date (UTC). Edit this:
-    const openingISO = "2026-02-15T18:00:00Z"; // change date/time here
-    const openDate = new Date(openingISO);
+<!-- RATING -->
+<div class="section" id="rating">
+  <div class="wrap">
+    <h2>Project Rating</h2>
+    <div class="card">
+      <table>
+        <tr><th>Character</th><th>Clan</th><th>Class</th><th>PvP</th><th>PK</th></tr>
+        <tr><td>Example</td><td>ECLIPSE</td><td>Duelist</td><td>120</td><td>3</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
 
-    // Pretty date output in UTC
-    const opts = {
-      weekday:"short", year:"numeric", month:"short", day:"2-digit",
-      hour:"2-digit", minute:"2-digit", timeZone:"UTC", timeZoneName:"short"
-    };
-    document.getElementById("openDateText").textContent =
-      new Intl.DateTimeFormat("en-US", opts).format(openDate);
+<!-- FOOTER -->
+<div class="footer">© <span id="y"></span> ECLIPSE HF</div>
 
-    function tick(){
-      const now = new Date();
-      const diff = openDate - now;
-      const el = document.getElementById("countdown");
-
-      if (isNaN(openDate.getTime())) { el.textContent = "TBA"; return; }
-      if (diff <= 0){ el.textContent = "OPEN"; return; }
-
-      const s = Math.floor(diff/1000);
-      const d = Math.floor(s/86400);
-      const h = Math.floor((s%86400)/3600);
-      const m = Math.floor((s%3600)/60);
-      const ss = s%60;
-
-      el.textContent = `${d}d ${h}h ${m}m ${ss}s`;
-    }
-
-    document.getElementById("y").textContent = new Date().getFullYear();
-    tick();
-    setInterval(tick, 1000);
-  </script>
+<script>
+const openingISO="2026-02-15T18:00:00Z";
+const openDate=new Date(openingISO);
+document.getElementById("openDateText").textContent=openDate.toUTCString().replace("GMT","UTC");
+function tick(){
+  const now=new Date();
+  const d=openDate-now;
+  if(d<=0){document.getElementById("countdown").textContent="OPEN";return;}
+  const s=Math.floor(d/1000);
+  document.getElementById("countdown").textContent=
+    `${Math.floor(s/86400)}d ${Math.floor(s%86400/3600)}h ${Math.floor(s%3600/60)}m ${s%60}s`;
+}
+tick();setInterval(tick,1000);
+document.getElementById("y").textContent=new Date().getFullYear();
+</script>
 
 </body>
 </html>
